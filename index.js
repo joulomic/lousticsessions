@@ -3,9 +3,12 @@
 
     const app = express();
     const verifyWebhook = require('./verify-webhook');
+var port = process.env.PORT || 3000;
 
     app.get('/', verifyWebhook);
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    app.listen(process.env.PORT || 3000);
+    app.listen(port, function() {
+       console.log("App is running on port " + port);
+    });
